@@ -1,0 +1,13 @@
+--- a/src/jdk.hotspot.agent/macosx/native/libsaproc/MacosxDebuggerLocal.m	Thu Sep 08 21:11:53 2016 +0000
++++ b/src/jdk.hotspot.agent/macosx/native/libsaproc/MacosxDebuggerLocal.m	Wed Sep 14 17:35:58 2016 -0700
+@@ -688,8 +688,8 @@
+ // attach to a process/thread specified by "pid"
+ static bool ptrace_attach(pid_t pid) {
+   int res;
+-  if ((res = ptrace(PT_ATTACH, pid, 0, 0)) < 0) {
+-    print_error("ptrace(PT_ATTACH, %d) failed with %d\n", pid, res);
++  if ((res = ptrace(PT_ATTACHEXC, pid, 0, 0)) < 0) {
++    print_error("ptrace(PT_ATTACHEXC, %d) failed with %d\n", pid, res);
+     return false;
+   } else {
+     return ptrace_waitpid(pid);

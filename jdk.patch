@@ -1,0 +1,46 @@
+--- a/src/java.desktop/share/native/libjavajpeg/jdhuff.c	Mon Sep 12 22:04:48 2016 +0000
++++ b/src/java.desktop/share/native/libjavajpeg/jdhuff.c	Wed Sep 14 17:48:17 2016 -0700
+@@ -450,15 +450,16 @@
+ 
+ #define HUFF_EXTEND(x,s)  ((x) < extend_test[s] ? (x) + extend_offset[s] : (x))
+ 
++static const unsigned int MINUS_ONE = 0Xffffffff; 
+ static const int extend_test[16] =   /* entry n is 2**(n-1) */
+   { 0, 0x0001, 0x0002, 0x0004, 0x0008, 0x0010, 0x0020, 0x0040, 0x0080,
+     0x0100, 0x0200, 0x0400, 0x0800, 0x1000, 0x2000, 0x4000 };
+ 
+ static const int extend_offset[16] = /* entry n is (-1 << n) + 1 */
+-  { 0, ((-1)<<1) + 1, ((-1)<<2) + 1, ((-1)<<3) + 1, ((-1)<<4) + 1,
+-    ((-1)<<5) + 1, ((-1)<<6) + 1, ((-1)<<7) + 1, ((-1)<<8) + 1,
+-    ((-1)<<9) + 1, ((-1)<<10) + 1, ((-1)<<11) + 1, ((-1)<<12) + 1,
+-    ((-1)<<13) + 1, ((-1)<<14) + 1, ((-1)<<15) + 1 };
++  { 0, (MINUS_ONE<<1) + 1, (MINUS_ONE<<2) + 1, (MINUS_ONE<<3) + 1, (MINUS_ONE<<4) + 1,
++    (MINUS_ONE<<5) + 1, (MINUS_ONE<<6) + 1, (MINUS_ONE<<7) + 1, (MINUS_ONE<<8) + 1,
++    (MINUS_ONE<<9) + 1, (MINUS_ONE<<10) + 1, (MINUS_ONE<<11) + 1, (MINUS_ONE<<12) + 1,
++    (MINUS_ONE<<13) + 1, (MINUS_ONE<<14) + 1, (MINUS_ONE<<15) + 1 };
+ 
+ #endif /* AVOID_TABLES */
+ 
+--- a/src/java.desktop/share/native/libjavajpeg/jdphuff.c	Mon Sep 12 22:04:48 2016 +0000
++++ b/src/java.desktop/share/native/libjavajpeg/jdphuff.c	Wed Sep 14 17:48:17 2016 -0700
+@@ -210,15 +210,16 @@
+ 
+ #define HUFF_EXTEND(x,s)  ((x) < extend_test[s] ? (x) + extend_offset[s] : (x))
+ 
++static const unsigned int MINUS_ONE = 0Xffffffff;
+ static const int extend_test[16] =   /* entry n is 2**(n-1) */
+   { 0, 0x0001, 0x0002, 0x0004, 0x0008, 0x0010, 0x0020, 0x0040, 0x0080,
+     0x0100, 0x0200, 0x0400, 0x0800, 0x1000, 0x2000, 0x4000 };
+ 
+ static const int extend_offset[16] = /* entry n is (-1 << n) + 1 */
+-  { 0, ((-1)<<1) + 1, ((-1)<<2) + 1, ((-1)<<3) + 1, ((-1)<<4) + 1,
+-    ((-1)<<5) + 1, ((-1)<<6) + 1, ((-1)<<7) + 1, ((-1)<<8) + 1,
+-    ((-1)<<9) + 1, ((-1)<<10) + 1, ((-1)<<11) + 1, ((-1)<<12) + 1,
+-    ((-1)<<13) + 1, ((-1)<<14) + 1, ((-1)<<15) + 1 };
++  { 0, (MINUS_ONE<<1) + 1, (MINUS_ONE<<2) + 1, (MINUS_ONE<<3) + 1, (MINUS_ONE<<4) + 1,
++    (MINUS_ONE<<5) + 1, (MINUS_ONE<<6) + 1, (MINUS_ONE<<7) + 1, (MINUS_ONE<<8) + 1,
++    (MINUS_ONE<<9) + 1, (MINUS_ONE<<10) + 1, (MINUS_ONE<<11) + 1, (MINUS_ONE<<12) + 1,
++    (MINUS_ONE<<13) + 1, (MINUS_ONE<<14) + 1, (MINUS_ONE<<15) + 1 };
+ 
+ #endif /* AVOID_TABLES */
+ 
